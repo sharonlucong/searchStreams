@@ -80,7 +80,9 @@ function createStreamItemElement(stream) {
 }
 
 function resetStage() {
-    DOM.streamsElement.innerHTML = "";
+    while (DOM.streamsElement.firstChild) {
+        DOM.streamsElement.removeChild(DOM.streamsElement.firstChild);
+    }
 
     // Used for warning box
     if (APP.timer != null) {
