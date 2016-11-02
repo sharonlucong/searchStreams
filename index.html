@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Twitch.tv Search Stream</title>
+    <meta name="description" content="Search Twitch.tv streams with Twitch API">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="search">
+            <label for="channelSearchInput">Channel: </label>
+            <input id="channelSearchInput" type="text" placeholder="Search channel...">
+            <label for="gameSearchInput">Game: </label>
+            <input id="gameSearchInput" type="text" placeholder="Search game...">
+            <label for="limitSearchInput">Limit: </label>
+            <input id="limitSearchInput" type="number" min="0" max="100" value="25">
+            <button type="button" onclick="queryStreams();">Search</button>
+        </div>
+        <div class="content">
+            <div class="content__header">
+                <div class="results">
+                    <span>Total results:</span>
+                    <span id="streamsLength"></span>
+                </div>
+                <div class="pages">
+                    <div id="leftArrow" class="arrow-left"></div>
+                    <div id="currentPage"></div>
+                    <div>/</div>
+                    <div id="totalPages"></div>
+                    <div id="rightArrow" class="arrow-right"></div>
+                </div>
+            </div>
+            <div id="streams" class="content__streams">
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
