@@ -28,7 +28,7 @@ var getStreams = (function() {
     queryStreams();
 
     return function(json) {
-        var streams = json.streams;
+        var streams = json.streams || [];
 
         // Reset variables/doms for each query
         APP.streams = [];
