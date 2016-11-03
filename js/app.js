@@ -13,6 +13,8 @@ var getStreams = (function() {
     DOM.gameInputElement = document.getElementById("gameSearchInput");
     DOM.channelInputElement = document.getElementById("channelSearchInput");
     DOM.limitSearchInputElement = document.getElementById("limitSearchInput");
+    DOM.queryInputElement = document.getElementById("queryInput");
+    DOM.smartSearchRadioElement = document.getElementById("smartSearch");
 
     DOM.warningElement = document.createElement("div");
     DOM.warningElement.classList.add("warning");
@@ -95,25 +97,34 @@ function resetStage() {
 function queryStreams() {
     resetStage();
 
-    var game = DOM.gameInputElement.value;
-    var channel = DOM.channelInputElement.value;
-    var limit = DOM.limitSearchInputElement.value;
-
-    if (game) {
-        game = "&game=" + game;
-    }
-
-    if (channel) {
-        channel = "&channel=" + channel;
-    }
-
-    if (limit) {
-        limit = "&limit=" + limit;
-    }
-
     var script = document.createElement("script");
     script.type = 'text/javascript';
-    script.src = "https://api.twitch.tv/kraken/streams?client_id=je7bhv6cln7ckv3dyzqkogdrgwa0rj3&callback=getStreams&limit=100" + game + channel + limit;
+    var src = "https://api.twitch.tv/kraken/streams?client_id=je7bhv6cln7ckv3dyzqkogdrgwa0rj3&callback=getStreams";
+
+    if (!DOM.smartSearchRadioElement.checked) {
+        var query = DOM.queryInputElement.value;
+        src = src + "&" + query;
+    } else {
+        var game = DOM.gameInputElement.value;
+        var channel = DOM.channelInputElement.value;
+        var limit = DOM.limitSearchInputElement.value;
+
+        if (game) {
+            game = "&game=" + game;
+        }
+
+        if (channel) {
+            channel = "&channel=" + channel;
+        }
+
+        if (limit) {
+            limit = "&limit=" + limit;
+        }
+
+        src = src + game + channel + limit;
+    }
+
+    script.src = src;
 
     DOM.streamsElement.appendChild(script);
 }

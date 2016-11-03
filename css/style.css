@@ -2,14 +2,6 @@ html {
     font-family: Helvetica;
 }
 
-label {
-    margin-left: 15px;
-}
-
-input {
-    margin-left: 5px;
-}
-
 button {
     margin-left: 30px;
 }
@@ -23,14 +15,30 @@ button {
 }
 
 .search {
-    height: 100px;
+    padding: 20px;
     border-bottom: 1px solid black;
-    display: flex;
-    align-items: baseline;
 }
 
-.search > * {
-    margin-top: 50px;
+.querySection {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.querySection input {
+    margin-right: 15px;
+}
+
+.normalQuery,
+.smartQuery {
+    display: none;
+}
+
+#customizedSearch:checked ~ .querySection .normalQuery {
+    display: inline-block;
+}
+
+#smartSearch:checked ~ .querySection .smartQuery {
+    display: inline-block;
 }
 
 .content__streams {

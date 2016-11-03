@@ -11,13 +11,25 @@
 <body>
     <div class="container">
         <div class="search">
-            <label for="channelSearchInput">Channel: </label>
-            <input id="channelSearchInput" type="text" placeholder="Search channel...">
-            <label for="gameSearchInput">Game: </label>
-            <input id="gameSearchInput" type="text" placeholder="Search game...">
-            <label for="limitSearchInput">Limit: </label>
-            <input id="limitSearchInput" type="number" min="0" max="100" value="25">
-            <button type="button" onclick="queryStreams();">Search</button>
+            <input id="smartSearch" type="radio" name="radio" checked>
+            <label for="smartSearch">Smart Query</label>
+            <input id="customizedSearch" type="radio" name="radio">
+            <label for="customizedSearch">Normal Query</label>
+            <div class="querySection">
+                <div class="normalQuery">
+                    <label for="queryInput">Query:</label>
+                    <input id="queryInput" size="40" type="text" placeholder="Directly append to url, e.g. limit=15">
+                </div>
+                <div class="smartQuery">
+                    <label for="channelSearchInput">Channel: </label>
+                    <input id="channelSearchInput" type="text" placeholder="Search channel...">
+                    <label for="gameSearchInput">Game: </label>
+                    <input id="gameSearchInput" type="text" placeholder="Search game...">
+                    <label for="limitSearchInput">Limit: </label>
+                    <input id="limitSearchInput" type="number" min="0" max="100" value="25">
+                </div>
+                <button type="button" onclick="queryStreams();">Search</button>
+            </div>
         </div>
         <div class="content">
             <div class="content__header">
